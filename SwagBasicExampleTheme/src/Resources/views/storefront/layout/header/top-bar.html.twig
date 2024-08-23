@@ -1,0 +1,23 @@
+{% block layout_header_top_bar %}
+    <div class="top-bar d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <p>
+                        {{ 'header.NavbarShippingNote'|trans|sw_sanitize }}
+                    </p>
+                </div>
+                <div class="col-4 text-center">
+                    <p>
+                        {{ 'header.NavbarContact'|trans|sw_sanitize }}
+                    </p>
+                </div>
+                <div class="col-4">
+                    <p class="d-flex justify-content-end">
+                        {{ 'header.NavbarPaymentNote'|trans|sw_sanitize }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

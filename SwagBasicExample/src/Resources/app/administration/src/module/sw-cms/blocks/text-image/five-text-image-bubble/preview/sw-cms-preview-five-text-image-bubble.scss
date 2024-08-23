@@ -1,0 +1,30 @@
+.sw-cms-preview-five-text-image-bubble__block-title {
+  text-align: center;
+}
+.sw-cms-preview-five-text-image-bubble {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  padding: 15px;
+
+  .sw-cms-preview-five-text-image-bubble__image {
+    height: 45px;
+    width: 45px;
+    margin: auto;
+    border-radius: 50%;
+    background-clip: padding-box;
+    overflow: hidden;
+  }
+
+  .sw-cms-preview-five-text-image-bubble__text {
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}

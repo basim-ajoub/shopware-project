@@ -1,0 +1,17 @@
+{% block block_custom_text_teaser %}
+<div class="container custom_text_teaser ">
+    {% set element = block.slots.getSlot('content') %}
+    {% set columns = 1 %}
+    <div class="col-12 text-container" data-cms-element-id="{{ element.id }}">
+        {% block block_custom_text_teaser_text %}
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+        {% endblock %}
+    </div>
+    {% set element = block.slots.getSlot('image') %}
+    <div class="col-12 image-container" data-cms-element-id="{{ element.id }}">
+        {% block block_custom_text_teaser_image %}
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

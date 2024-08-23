@@ -1,0 +1,6 @@
+{% block sw_cms_block_webspace_big_image_with_text_preview %}
+    <div class="sw-cms-block-webspace-big-image-with-text">
+        <slot name="text">{% block sw_cms_block_my_image_text_reversed_slot_right %}{% endblock %}</slot>
+        <slot name="image">{% block sw_cms_block_my_image_text_reversed_slot_left %}{% endblock %}</slot>
+    </div>
+{% endblock %}

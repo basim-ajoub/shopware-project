@@ -1,0 +1,27 @@
+.sw-cms-block-text-collapse-teaser {
+    .sw-cms-slot {
+        justify-content: center;
+    }
+    .collapse-title-box {
+        background: #ffffff;
+        display: flex;
+
+        .sw-cms-slot-title {
+            width: 85%;
+            padding: .5rem 0;
+        }
+        .text-collapse-toggle {
+            background: #515151;
+            color: #ffffff;
+            width: 15%;
+            text-align: center;
+            font-weight: bold;
+            padding: .5rem 0;
+        }
+    }
+    .collapse-title-box {
+        font-size: 0.875rem;
+    }
+
+
+}

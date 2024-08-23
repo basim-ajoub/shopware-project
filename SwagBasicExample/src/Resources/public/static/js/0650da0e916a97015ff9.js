@@ -1,0 +1,1 @@
+"use strict";(window["webpackJsonpPluginswag-basic-example"]=window["webpackJsonpPluginswag-basic-example"]||[]).push([[475],{475:function(s,n,e){e.r(n),e.d(n,{default:function(){return c}});var c={template:'\n{% block sw_cms_block_test_product_slider %}\n<div class="sw-cms-block-test-product-slider">\n    <slot name="productSlider"></slot>\n</div>\n{% endblock %}\n'}}}]);

@@ -1,0 +1,16 @@
+{% block sw_cms_block_custom_hero_image_with_text %}
+    <div class="sw-cms-block-custom-hero-image-with-text">
+        <div class="sw-cms-block-custom-hero-image-with-text__left">
+            <div class="sw-cms-block-custom-hero-image-with-text__left">
+                {% block sw_cms_block_custom_hero_image_with_text_text %}
+                    {{ cmsSlot(content) }}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="sw-cms-block-custom-hero-image-with-text__right">
+            {% block sw_cms_block_custom_hero_image_with_text_image %}
+                {{ cmsSlot(content) }}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

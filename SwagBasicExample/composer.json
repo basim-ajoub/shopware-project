@@ -1,0 +1,27 @@
+{
+    "name": "swag-basic-example/swag-basic-example",
+    "description": "create a cms element",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "SwagBasicExample\\SwagBasicExample",
+        "label": {
+            "de-DE": "Cms element",
+            "en-GB": "Cms element"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "SwagBasicExample\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SwagBasicExample\\Tests\\": "tests/"
+        }
+    }
+}

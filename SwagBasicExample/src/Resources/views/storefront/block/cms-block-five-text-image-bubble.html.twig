@@ -1,0 +1,115 @@
+{% block block_five_image_text_bubble %}
+<div class="cms-five-text-image-bubble">
+    <h2 class="cms-five-text-image-bubble__block-title">
+        {% block block_image_text_bubble_block_title %}
+            {% set element = block.slots.getSlot('block-title') %}
+
+            <div data-cms-element-id="{{ element.id }}">
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            </div>
+        {% endblock %}
+    </h2>
+    <div class="cms-five-text-image-bubble__content row d-flex justify-content-center">
+        {% set columns = 5 %}
+        {% block block_image_text_bubble_first %}
+            <div class="col-lg-2 col-md-3 col-sm-5 item">
+                {% block block_image_text_bubble_first_image %}
+                    {% set element = block.slots.getSlot('image-1') %}
+
+                    <div class="image-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+
+                {% block block_image_text_bubble_first_text %}
+                    {% set element = block.slots.getSlot('text-1') %}
+
+                    <div class="text-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block block_image_text_bubble_second %}
+            <div class="col-lg-2 col-md-3 col-sm-5 item">
+                {% block block_image_text_bubble_second_image %}
+                    {% set element = block.slots.getSlot('image-2') %}
+
+                    <div class="image-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+
+                {% block block_image_text_bubble_second_text %}
+                    {% set element = block.slots.getSlot('text-2') %}
+
+                    <div class="text-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block block_image_text_bubble_third %}
+            <div class="col-lg-2 col-md-3 col-sm-5 item">
+                {% block block_image_text_bubble_third_image %}
+                    {% set element = block.slots.getSlot('image-3') %}
+
+                    <div class="image-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+
+                {% block block_image_text_bubble_third_text %}
+                    {% set element = block.slots.getSlot('text-3') %}
+
+                    <div class="text-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block block_image_text_bubble_fourth %}
+            <div class="col-lg-2 col-md-3 col-sm-5 item">
+                {% block block_image_text_bubble_fourth_image %}
+                    {% set element = block.slots.getSlot('image-4') %}
+
+                    <div class="image-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+
+                {% block block_image_text_bubble_fourth_text %}
+                    {% set element = block.slots.getSlot('text-4') %}
+
+                    <div class="text-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block block_image_text_bubble_fifth %}
+            <div class="col-lg-2 col-md-3 col-sm-5 item">
+                {% block  block_image_text_bubble_fifth_image %}
+                    {% set element = block.slots.getSlot('image-5') %}
+
+                    <div class="image-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+
+                {% block block_image_text_bubble_fifth_text %}
+                    {% set element = block.slots.getSlot('text-5') %}
+
+                    <div class="text-box" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

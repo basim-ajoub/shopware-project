@@ -1,0 +1,37 @@
+{% block block_text_collapse_teaser %}
+    {% set columns = 1 %}
+    <div class="text-collapse-teaser-block container custom-container">
+        {% block block_image_text_collapse_teaser_title %}
+            {% set element = block.slots.getSlot('title') %}
+            {% set collapseItem = block.slots.getSlot('title') %}
+
+            <div class="col-12 text-collapse-title-container" data-cms-element-id="{{ element.id }}">
+               <div class="d-flex custom-t-collapse"  data-bs-toggle="collapse" data-bs-target="#collapse{{ block.position }}">
+                   <div class="text-collapse-title-text">
+                       {% block block_text_collapse_teaser_title_inner %}
+                           {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                       {% endblock %}
+                   </div>
+                   {% block layout_text_collapse_icons %}
+                       <div class="text-collapse-column-toggle">
+                        <span class="text-collapse-plus-icon">
+                            {% sw_icon 'plus' %}
+                        </span>
+                           <span class="text-collapse-minus-icon d-none">
+                            {% sw_icon 'minus' %}
+                        </span>
+                       </div>
+                   {% endblock %}
+               </div>
+            </div>
+        {% endblock %}
+        {% block block_image_text_collapse_teaser_content %}
+            {% set element = block.slots.getSlot('content') %}
+            <div class="col-12 text-collapse-content-container collapse" id="collapse{{ block.position }}" data-cms-element-id="{{ element.id }}">
+                {% block block_text_collapse_teaser_content_inner %}
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

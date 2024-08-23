@@ -1,0 +1,112 @@
+{% block component_product_box_action_inner %}
+    {% set id = product.id %}
+    <div class="product-action">
+        {% set isAvailable = not product.isCloseout or (product.availableStock >= product.minPurchase) %}
+        {% set displayFrom = product.calculatedPrices.count > 1 %}
+        {% set displayBuyButton = isAvailable and not displayFrom and product.childCount <= 0 %}
+
+        {% if displayBuyButton and config('core.listing.allowBuyInListing') %}
+            {% block component_product_box_action_buy %}
+                {# @var product \Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity #}
+                <form action="{{ path('frontend.checkout.line-item.add') }}"
+                      method="post"
+                      class="buy-widget"
+                      data-add-to-cart="true">
+                    {% block component_product_box_action_form %}
+                        {% block component_product_box_action_buy_redirect_input %}
+                            {# fallback redirect back to detail page is deactivated via js #}
+                            <input type="hidden"
+                                   name="redirectTo"
+                                   value="frontend.detail.page">
+
+                            <input type="hidden"
+                                   name="redirectParameters"
+                                   data-redirect-parameters="true"
+                                   value="{{ {productId: id}|json_encode }}">
+                        {% endblock %}
+
+                        {% block component_product_box_action_buy_info %}
+                            {# @deprecated tag:v6.7.0 - Block will be removed, use component_product_box_action_buy_info instead #}
+                            {% block page_product_detail_buy_product_buy_info %}
+                                <input type="hidden"
+                                       name="lineItems[{{ id }}][id]"
+                                       value="{{ id }}">
+                                <input type="hidden"
+                                       name="lineItems[{{ id }}][referencedId]"
+                                       value="{{ id }}">
+                                <input type="hidden"
+                                       name="lineItems[{{ id }}][type]"
+                                       value="product">
+                                <input type="hidden"
+                                       name="lineItems[{{ id }}][stackable]"
+                                       value="1">
+                                <input type="hidden"
+                                       name="lineItems[{{ id }}][removable]"
+                                       value="1">
+                                <input type="hidden"
+                                       name="lineItems[{{ id }}][quantity]"
+                                       value="{{ product.minPurchase }}">
+                            {% endblock %}
+                        {% endblock %}
+                        
+                        <div class="custom-product-link-box">
+                            <a href="{{ seoUrl('frontend.detail.page', {productId: id}) }}"
+                               class="custom-product-link"
+                               title="{{ name }}">
+                                {{ 'listing.customProductLinkLabel'|trans|sw_sanitize }}
+                            </a>
+                        </div>
+
+
+                        {% block component_product_box_action_buy_meta %}
+                            {# @deprecated tag:v6.7.0 - Block will be removed, use component_product_box_action_buy_meta instead #}
+                            {% block page_product_detail_product_buy_meta %}
+                                <input type="hidden"
+                                       name="product-name"
+                                       value="{{ product.translated.name }}">
+                            {% endblock %}
+                        {% endblock %}
+                        {% block component_product_box_action_buy_button %}
+                            {# @deprecated tag:v6.7.0 - Block will be removed, use component_product_box_action_buy_button instead #}
+                            {% block page_product_detail_product_buy_button %}
+                                <div class="d-grid custom-cart-btn">
+                                    <button class="btn"
+                                            title="{{ 'listing.boxAddProduct'|trans|striptags }}">
+                                        <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="21.826" height="22" viewBox="0 0 21.826 22">
+                                            <path id="bag" d="M5.4,2.75a.917.917,0,0,1,0,1.833H3.474a.917.917,0,0,0-.915.869L1.835,19.2a.927.927,0,0,0,.915.965H19.076a.926.926,0,0,0,.915-.965l-.724-13.75a.917.917,0,0,0-.915-.869H16.4a.917.917,0,1,1,0-1.833h1.951A2.75,2.75,0,0,1,21.1,5.355l.724,13.75c0,.072,0,.072,0,.145A2.75,2.75,0,0,1,19.076,22H2.75c-.072,0-.072,0-.145,0A2.75,2.75,0,0,1,0,19.105L.727,5.355A2.75,2.75,0,0,1,3.474,2.75ZM9.068,4.583a.917.917,0,0,1-1.833,0V2.75A2.75,2.75,0,0,1,9.984,0h1.833a2.75,2.75,0,0,1,2.75,2.75V4.583a.917.917,0,1,1-1.833,0V2.75a.917.917,0,0,0-.917-.917H9.984a.917.917,0,0,0-.917.917Z" transform="translate(0)" fill="#515151"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            {% endblock %}
+                        {% endblock %}
+                    {% endblock %}
+                </form>
+            {% endblock %}
+        {% else %}
+            {% block component_product_box_action_detail %}
+                <div class="d-grid">
+                    <a href="{{ seoUrl('frontend.detail.page', {productId: id}) }}"
+                       class="btn btn-light btn-detail"
+                       title="{{ 'listing.boxProductDetails'|trans|striptags }}">
+                        {% block component_product_box_action_detail_label %}
+                            {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
+                        {% endblock %}
+                    </a>
+                </div>
+            {% endblock %}
+        {% endif %}
+    </div>
+
+    {# @deprecated tag:v6.7.0 - Block, including the content will be removed. "product-name" and "product-id" will be hold inside "data-product-information" in box-standard.html.twig instead. #}
+    {% if not feature('v6.7.0.0') %}
+        {% block component_product_box_action_meta %}
+            <input type="hidden"
+                   name="product-name"
+                   value="{{ product.translated.name }}">
+
+            <input type="hidden"
+                   name="product-id"
+                   value="{{ id }}">
+        {% endblock %}
+    {% endif %}
+{% endblock %}

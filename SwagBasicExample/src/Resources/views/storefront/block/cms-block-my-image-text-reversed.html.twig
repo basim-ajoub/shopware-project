@@ -1,0 +1,24 @@
+{% block block_image_text %}
+    {% set columns = 2 %}
+<div class="custom-big-image-with-text-block justify-content-between row boxed">
+    {% block block_image_text_left %}
+        {% set element = block.slots.getSlot('left') %}
+
+        <div class="col-lg-4 col-md-5 col-sm-12" data-cms-element-id="{{ element.id }}">
+            {% block block_image_text_left_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_image_text_right %}
+        {% set element = block.slots.getSlot('right') %}
+
+        <div class="col-lg-8 col-md-7 col-sm-12" data-cms-element-id="{{ element.id }}">
+            {% block block_image_text_right_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+</div>
+{% endblock %}
